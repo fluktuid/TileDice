@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">TileDice</string>
+
+    <string name="tile_name">Tile</string>
+
+    <string name="coin">Münze</string>
+    <string name="six_sides">Münze</string>
+    <string name="twelve_sides">Münze</string>
+    <string name="twenty_sides">Münze</string>
+
+    <string name="dice_type">Würfeltyp</string>
+    <string name="summary_dice_type">Wähle den Würfeltyp, der verwendet werden soll</string>
+
+
+    <string name="zero">Null</string>
+    <string name="one">Eins</string>
+    <string name="two">Zwei</string>
+    <string name="three">Drei</string>
+    <string name="four">Vier</string>
+    <string name="five">Fünf</string>
+    <string name="six">Sechs</string>
+</resources>
