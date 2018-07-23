@@ -1,0 +1,17 @@
+<resources>
+    <string-array name="diceNames">
+        <item>@string/coin</item>
+        <item>@string/six_sides</item>
+        <item>@string/eight_sides</item>
+        <item>@string/twelve_sides</item>
+        <item>@string/twenty_sides</item>
+    </string-array>
+
+    <string-array name="diceSizes">
+        <item>2</item>
+        <item>6</item>
+        <item>8</item>
+        <item>12</item>
+        <item>20</item>
+    </string-array>
+</resources>

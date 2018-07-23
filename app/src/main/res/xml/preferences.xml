@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListPreference
+        android:defaultValue="1"
+        android:entries="@array/diceNames"
+        android:entryValues="@array/diceSizes"
+        android:key="diceType"
+        android:summary="@string/summary_dice_type"
+        android:title="@string/dice_type" />
+
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="diceAnimate"
+        android:summary="@string/summary_dice_animation"
+        android:title="@string/dice_animation" />
+</PreferenceScreen>

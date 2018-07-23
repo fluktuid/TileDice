@@ -4,12 +4,20 @@
     <string name="tile_name">Tile</string>
 
     <string name="coin">Münze</string>
-    <string name="six_sides">Münze</string>
-    <string name="twelve_sides">Münze</string>
-    <string name="twenty_sides">Münze</string>
+    <string name="six_sides">Sechsseitiger Würfel</string>
+    <string name="eight_sides">Achtseitiger Würfel</string>
+    <string name="twelve_sides">Zwölfseitiger Würfel</string>
+    <string name="twenty_sides">Zwanzigseitiger Würfel</string>
+
+    <string name="the_die_is_cast">Alea iacta est</string>
+
+    <string name="head">Kopf</string>
+    <string name="number">Zahl</string>
 
     <string name="dice_type">Würfeltyp</string>
     <string name="summary_dice_type">Wähle den Würfeltyp, der verwendet werden soll</string>
+    <string name="dice_animation">Animation</string>
+    <string name="summary_dice_animation">Wähle ob das Würfeln animiert wird</string>
 
 
     <string name="zero">Null</string>
@@ -19,4 +27,18 @@
     <string name="four">Vier</string>
     <string name="five">Fünf</string>
     <string name="six">Sechs</string>
+    <string name="seven">Sieben</string>
+    <string name="eight">Acht</string>
+    <string name="nine">Neun</string>
+    <string name="ten">Zehn</string>
+    <string name="eleven">Elf</string>
+    <string name="twelve">Zwölf</string>
+    <string name="thirteen">Dreizehn</string>
+    <string name="fourteen">Vierzehn</string>
+    <string name="fifteen">Fünfzehn</string>
+    <string name="sixteen">Sechzehn</string>
+    <string name="seventeen">Siebzehn</string>
+    <string name="eighteen">Achtzehn</string>
+    <string name="nineteen">Neunzehn</string>
+    <string name="twenty">Zwanzig</string>
 </resources>
