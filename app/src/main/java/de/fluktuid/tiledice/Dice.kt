@@ -76,17 +76,22 @@ class EightSideDice(@IntRange(from = 1, to = 8) private val eyes: Int) : Dice {
     override val contentDescription: Int = R.string.app_name
 }
 
-// TODO: Logos schreiben
 class TwelveSideDice(@IntRange(from = 1, to = 12) private val eyes: Int) : Dice {
     @DrawableRes
     override val drawableRes: Int = when (eyes) {
-        1 -> R.drawable.dice_1
-        2 -> R.drawable.dice_2
-        3 -> R.drawable.dice_3
-        4 -> R.drawable.dice_4
-        5 -> R.drawable.dice_5
-        6 -> R.drawable.dice_6
-        else -> R.drawable.dice_multiple
+        1 -> R.drawable.dice_d12_1
+        2 -> R.drawable.dice_d12_2
+        3 -> R.drawable.dice_d12_3
+        4 -> R.drawable.dice_d12_4
+        5 -> R.drawable.dice_d12_5
+        6 -> R.drawable.dice_d12_6
+        7 -> R.drawable.dice_d12_7
+        8 -> R.drawable.dice_d12_8
+        9 -> R.drawable.dice_d12_9
+        10 -> R.drawable.dice_d12_10
+        11 -> R.drawable.dice_d12_11
+        12 -> R.drawable.dice_d12_12
+        else -> R.drawable.dice_d12_blank
     }
     @StringRes
     override val label: Int = when (eyes) {
