@@ -13,4 +13,13 @@
         android:key="diceAnimate"
         android:summary="@string/summary_dice_animation"
         android:title="@string/dice_animation" />
+
+    <ListPreference
+        android:defaultValue="rotate"
+        android:entries="@array/diceAnimation"
+        android:entryValues="@array/diceAnimationKeys"
+        android:key="diceAnimateType"
+        android:summary="@string/summary_dice_animation_type"
+        android:dependency="diceAnimate"
+        android:title="@string/dice_animation_type" />
 </PreferenceScreen>

@@ -20,6 +20,8 @@ class Coin(@IntRange(from = 1, to = 2) private val side: Int) : Dice {
     }
     @StringRes
     override val contentDescription: Int = R.string.app_name
+
+    override fun cloneRandom(): Dice = Coin((1..2).random())
 }
 
 class SixSideDice(@IntRange(from = 1, to = 6) private val eyes: Int) : Dice {
@@ -45,6 +47,8 @@ class SixSideDice(@IntRange(from = 1, to = 6) private val eyes: Int) : Dice {
     }
     @StringRes
     override val contentDescription: Int = R.string.app_name
+
+    override fun cloneRandom(): Dice = SixSideDice((1..6).random())
 }
 
 class EightSideDice(@IntRange(from = 1, to = 8) private val eyes: Int) : Dice {
@@ -74,6 +78,8 @@ class EightSideDice(@IntRange(from = 1, to = 8) private val eyes: Int) : Dice {
     }
     @StringRes
     override val contentDescription: Int = R.string.app_name
+
+    override fun cloneRandom(): Dice = EightSideDice((1..8).random())
 }
 
 class TwelveSideDice(@IntRange(from = 1, to = 12) private val eyes: Int) : Dice {
@@ -111,6 +117,8 @@ class TwelveSideDice(@IntRange(from = 1, to = 12) private val eyes: Int) : Dice 
     }
     @StringRes
     override val contentDescription: Int = R.string.app_name
+
+    override fun cloneRandom(): Dice = TwelveSideDice((1..12).random())
 }
 
 class TwentySideDice(@IntRange(from = 1, to = 20) private val eyes: Int) : Dice {
@@ -164,4 +172,6 @@ class TwentySideDice(@IntRange(from = 1, to = 20) private val eyes: Int) : Dice 
     }
     @StringRes
     override val contentDescription: Int = R.string.app_name
+
+    override fun cloneRandom(): Dice = TwentySideDice((1..20).random())
 }

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">TileDice</string>
 
-    <string name="tile_name">Tile</string>
+    <string name="tile_name">Würfel</string>
 
     <string name="coin">Münze</string>
     <string name="six_sides">Sechsseitiger Würfel</string>
@@ -18,6 +18,11 @@
     <string name="summary_dice_type">Wähle den Würfeltyp, der verwendet werden soll</string>
     <string name="dice_animation">Animation</string>
     <string name="summary_dice_animation">Wähle ob das Würfeln animiert wird</string>
+    <string name="dice_animation_type">Animation</string>
+    <string name="summary_dice_animation_type">Wähle die Animation, die verwendet werden soll</string>
+
+    <string name="animation_rotate">Rotieren</string>
+    <string name="animation_flip">Flippen</string>
 
 
     <string name="zero">Null</string>

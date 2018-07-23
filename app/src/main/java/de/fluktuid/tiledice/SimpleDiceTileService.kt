@@ -27,9 +27,11 @@ class SimpleDiceTileService : TileService() {
     private fun updateTile() {
         val tile = qsTile
 
-        val diceType = PreferenceManager.getDefaultSharedPreferences(this).getString("diceType", "6")
+        val dsp = PreferenceManager.getDefaultSharedPreferences(this)
 
-        val max = getMax(diceType)
+        val diceType = dsp.getString("diceType", "6")
+
+        val max =  getMax(diceType)
         val eyes = (1..max).random()
 
         val dice: Dice = getDice(diceType, eyes)
@@ -38,11 +40,17 @@ class SimpleDiceTileService : TileService() {
         tile.contentDescription = getString(dice.contentDescription)
         tile.state = Tile.STATE_ACTIVE
 
-        val animate = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("diceAnimate", true)
+        val animate = dsp.getBoolean("diceAnimate", true)
 
         if (animate) {
-            val bmp = tile.icon.loadDrawable(this)
-            updateTileByAnimation(bmp, dice.drawableRes)
+            val animType = dsp.getString("diceAnimateType", "rotate")
+            when (animType) {
+                "flip" -> updateTileByFlipAnimation(dice)
+                "rotate" -> {
+                    val bmp = tile.icon.loadDrawable(this)
+                    updateTileByRotateAnimation(bmp, dice.drawableRes)
+                }
+            }
         } else qsTile.updateTo(dice.drawableRes, this)
 
         Handler().postDelayed({
@@ -52,11 +60,35 @@ class SimpleDiceTileService : TileService() {
     }
 
     private fun Tile.updateTo(@DrawableRes res: Int, ctx: Context) {
-        this.icon = Icon.createWithResource(ctx, res)
-        this.updateTile()
+        icon = Icon.createWithResource(ctx, res)
+        updateTile()
     }
 
-    private fun updateTileByAnimation(oldDrawable: Drawable, @DrawableRes newRes: Int) {
+    private fun Tile.updateTo(bmp: Bitmap) {
+        icon = Icon.createWithBitmap(bmp)
+        updateTile()
+    }
+
+
+    private fun updateTileByFlipAnimation(dice: Dice) {
+        val anim = ValueAnimator.ofInt(0, 2)
+        anim.duration = 150L
+
+        anim.addUpdateListener {
+            val d = dice.cloneRandom()
+
+            //get tile and change icon
+            qsTile.updateTo(d.drawableRes, this)
+        }
+
+        anim.addListener(onEnd = {
+            qsTile.updateTo(dice.drawableRes, this)
+        })
+
+        anim.start()
+    }
+
+    private fun updateTileByRotateAnimation(oldDrawable: Drawable, @DrawableRes newRes: Int) {
         val rotationIcon = ValueAnimator.ofInt(0, 360)
         rotationIcon.duration = 150L
 
@@ -66,25 +98,22 @@ class SimpleDiceTileService : TileService() {
 
             val matrix = Matrix()
             matrix.postRotate(angle)
-
             val iconBitmap = Bitmap.createBitmap(oldBitmap, 0, 0, oldBitmap.width, oldBitmap.height, matrix, true)
 
             //get tile and change icon
-            qsTile.icon = Icon.createWithBitmap(iconBitmap)
-            qsTile.updateTile()
+            qsTile.updateTo(iconBitmap)
         }
 
         rotationIcon.addListener(onEnd = {
-            qsTile.icon = Icon.createWithResource(this, newRes)
-            qsTile.updateTile()
+            qsTile.updateTo(newRes, this)
         })
 
         rotationIcon.start()
     }
 
     private fun Drawable.toBitmap(): Bitmap {
-        val bitmap = Bitmap.createBitmap(this.intrinsicWidth,
-                this.intrinsicHeight, Bitmap.Config.ARGB_8888)
+        val bitmap = Bitmap.createBitmap(intrinsicWidth,
+                intrinsicHeight, Bitmap.Config.ARGB_8888)
         val canvas = Canvas(bitmap)
         this.setBounds(0, 0, canvas.width, canvas.height)
         this.draw(canvas)
@@ -116,6 +145,8 @@ interface Dice {
     val label: Int
     // @StringRes
     val contentDescription: Int
+
+    fun cloneRandom(): Dice
 }
 
-private fun ClosedRange<Int>.random() = SecureRandom().nextInt((endInclusive + 1) - start) + start
+fun ClosedRange<Int>.random() = SecureRandom().nextInt((endInclusive + 1) - start) + start

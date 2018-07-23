@@ -10,7 +10,7 @@
         android:theme="@style/AppTheme">
         <service
             android:name=".SimpleDiceTileService"
-            android:icon="@drawable/ic_launcher_foreground"
+            android:icon="@drawable/dice_multiple"
             android:label="@string/tile_name"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
             <intent-filter>
